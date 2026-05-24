@@ -24,7 +24,7 @@ elif len(AES_KEY) > 32:
 KEY_BYTES = AES_KEY.encode("utf-8")
 
 
-def encrypt_password(password: str) -> str:
+def encrypt_password(password):
     iv = get_random_bytes(16)
     cipher = AES.new(KEY_BYTES, AES.MODE_CBC, iv)
     ciphertext = cipher.encrypt(pad(password.encode("utf-8"), AES.block_size))
@@ -33,7 +33,7 @@ def encrypt_password(password: str) -> str:
     return f"{iv_b64}:{ciphertext_b64}"
 
 
-def decrypt_password(encrypted: str) -> str:
+def decrypt_password(encrypted):
     iv_b64, ciphertext_b64 = encrypted.split(":")
     iv = base64.b64decode(iv_b64)
     ciphertext = base64.b64decode(ciphertext_b64)

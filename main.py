@@ -2,14 +2,14 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Depends, HTTPException
 from pydantic import BaseModel
-from sqlmodel import Session, select
+from sqlmodel import select
 
 from models import User, create_db_and_tables, get_session
 from auth import encrypt_password, decrypt_password
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app):
     create_db_and_tables()
     yield
 
@@ -36,7 +36,7 @@ def root():
 
 
 @app.post("/register")
-def register(data: UserCreate, session: Session = Depends(get_session)):
+def register(data: UserCreate, session = Depends(get_session)):
     statement = select(User).where(User.username == data.username)
     existing_user = session.exec(statement).first()
 
@@ -58,7 +58,7 @@ def register(data: UserCreate, session: Session = Depends(get_session)):
 
 
 @app.post("/login")
-def login(data: UserCreate, session: Session = Depends(get_session)):
+def login(data: UserCreate, session = Depends(get_session)):
     statement = select(User).where(User.username == data.username)
     user = session.exec(statement).first()
 
