@@ -2,7 +2,7 @@
 
 Microservicio de **autenticación** construido con **FastAPI**, **SQLModel** y **AES (pycryptodome)**.
 
-Forma parte del **Proyecto Integrador del Tercer Semestre** de la **Universidad Internacional del Ecuador (UIDE)**, materia **Fundamentos de la Seguridad**, dictada por el profesor **Darío Cabezas**.
+Forma parte del **Proyecto Integrador del Tercer Semestre** de la **Universidad Internacional del Ecuador (UIDE)**, materia **Fundamentos de la Seguridad**
 
 Este servicio corre dentro de la **VLAN 10** del entorno del proyecto y se encarga del **registro e inicio de sesión** de los usuarios del sistema.
 
@@ -182,10 +182,4 @@ curl -X POST http://127.0.0.1:8000/login \
 
 ---
 
-## Créditos
 
-- **Universidad:** Universidad Internacional del Ecuador (UIDE)
-- **Materia:** Fundamentos de la Seguridad
-- **Profesor:** Darío Cabezas
-- **Semestre:** Tercero
-- **Despliegue:** VLAN 10
